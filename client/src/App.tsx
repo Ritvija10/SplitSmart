@@ -1,12 +1,19 @@
-
+import { Route, Routes } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
-
   return (
-    <>
-      <h1 className="text-3xl justify-center items-center font-bold text-emerald-600">Split Smart</h1>
-    </>
-  )
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<Dashboard />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
