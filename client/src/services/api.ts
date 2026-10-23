@@ -10,10 +10,12 @@ export async function apiRequest<T>(
   path: string,
   { method = "GET", body, token }: RequestOptions = {}
 ): Promise<T> {
+  const authToken = token ?? localStorage.getItem("token");
+
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
-  if (token) headers.Authorization = `Bearer ${token}`;
+  if (authToken) headers.Authorization = `Bearer ${authToken}`;
 
   const res = await fetch(`${API_URL}${path}`, {
     method,
