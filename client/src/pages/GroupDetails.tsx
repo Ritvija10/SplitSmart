@@ -9,6 +9,7 @@ import {
   removeMemberRequest,
 } from "../services/groupService";
 import type { Group, Member } from "../types/group";
+import ExpenseSection from "../components/ExpenseSection";
 
 export default function GroupDetails() {
   const { groupId } = useParams();
@@ -147,6 +148,7 @@ export default function GroupDetails() {
           className="bg-white p-6 rounded-xl shadow space-y-3"
         >
           <h2 className="text-lg font-semibold">Add a member</h2>
+          
           <p className="text-sm text-gray-500">
             They need a SplitSmart account first. Enter the email they
             registered with.
@@ -169,6 +171,7 @@ export default function GroupDetails() {
             </button>
           </div>
         </form>
+        <ExpenseSection group={group} />
       </div>
     </div>
   );
